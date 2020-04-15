@@ -71,19 +71,28 @@ def channel_options():
     return _options
 
 def date_picker():
+    max_date_allowed = dt.datetime.now().strftime('%Y-%m-%d')
     _calendar = dbc.InputGroup([
         dbc.InputGroupAddon('Date',addon_type='prepend',style={'width':'100%'}),
         html.Br(),
         dcc.DatePickerSingle(
             id='calendar',
             min_date_allowed=dt.datetime(2020,1,1),
-            max_date_allowed=dt.datetime.now(),
+            max_date_allowed=max_date_allowed,
             initial_visible_month=dt.datetime.now(),
-            date=dt.datetime.now(),
-            display_format='DD MMMM YYYY '
+            display_format='DD MMMM YYYY',
+            placeholder='Select date...'
         )
     ],size='lg')
     return _calendar
+
+def token_box():
+    box = dbc.InputGroup([
+        dbc.InputGroupAddon('Token',addon_type='prepend',style={'width':'100%'}),
+        html.Br(),
+        dbc.Input(id='token',placeholder='input your token here...',type='text')
+    ])
+    return box
 
 def cutted_text(text):
     if '</p>' in text:
@@ -113,10 +122,11 @@ def display_dataset(dataset,channel,website,_date):
     return [dbc.CardColumns(card_content),
             html.Br(),
             html.A(id='download',children='Download Result',href=href)]
-'''
 
-'''
-
+def check_token(token):
+    if token == 'netmarks':
+        return True
+    return False
 #-----------------#
 # main app layout #
 #-----------------#
@@ -132,8 +142,9 @@ app.layout = html.Div(
                         website_options(),html.Br(),
                         channel_options(),html.Br(),
                         date_picker(),html.Br(),
+                        token_box(),html.Br(),
                         dbc.Spinner(id='loader',children=[dbc.Button(id='submit',children='Start scraping')],className='inline'),html.Br(),
-                        html.Small('Process may take a few minutes, depending on how many url(s) are found')
+                        html.Small('Process may take a few minutes, depending on how many url(s) are found. Do not refresh your browser until scraping done.')
                     ])],className='w-100 visible'),
                 html.Div(id='result')]),
         html.Div(id='display-text',className='hidden'),
@@ -158,10 +169,12 @@ def set_channel_options(selected_website):
     [Input('submit','n_clicks')],
     [State('website','value'),
      State('channel','value'),
-     State('calendar','date')]
+     State('calendar','date'),
+     State('token','value')]
 )
-def display_result(n1,website,channel,_date):
-    if channel!=None:
+def display_result(n1,website,channel,_date,token):
+    is_token_correct = check_token(token)
+    if ((channel!=None)&(is_token_correct)):
         year,month,day = _date.split('-')
         _date_ = '/'.join([month,day,year])
         
