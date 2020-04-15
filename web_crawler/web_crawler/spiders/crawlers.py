@@ -24,7 +24,7 @@ from web_crawler.items import WebCrawlerItem
 import psycopg2
 from psycopg2 import sql
 database = 'crawler_db'
-user = 'postgres'
+user = 'pi'
 password = 'password'
 host = 'localhost'
 port = 5434

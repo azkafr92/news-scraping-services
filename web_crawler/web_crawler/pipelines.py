@@ -28,7 +28,7 @@ def create_table_if_not_exists(conn,table_name):
 class WebCrawlerPipeline(object):
     def open_spider(self,spider):
         database = 'crawler_db'
-        user = 'postgres'
+        user = 'pi'
         password = 'password'
         host = 'localhost'
         port = 5434

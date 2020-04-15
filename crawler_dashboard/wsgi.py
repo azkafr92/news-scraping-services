@@ -1,4 +1,4 @@
-from crawler_dashboard import app
+from app import server
 
 if __name__ == "__main__":
-    app.run_server(port=5001)
+    server.run()

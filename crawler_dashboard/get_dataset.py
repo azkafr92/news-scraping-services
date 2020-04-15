@@ -13,7 +13,7 @@ DEBUG = False
 # config database #
 #=================#
 database = 'crawler_db'
-user = 'postgres'
+user = 'pi'
 password = 'password'
 host = 'localhost'
 port = 5434
