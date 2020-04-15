@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block title %} Web Scraping Demo {% endblock %} 
+
+{% block body %}
+<div class="jumbotron">
+    <div class="container">
+        <h1>Web Scraping Demo</h1>
+        <form action="/" method="get">
+            {{ form.website }}
+        </form>
+    </div>
+</div>
+{% endblock %}

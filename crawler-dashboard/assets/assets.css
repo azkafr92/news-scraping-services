@@ -1,0 +1,12 @@
+.hidden {
+    visibility:hidden
+}
+.visible {
+    visibility:visible
+}
+.none {
+    display: none;
+}
+.inline {
+    display: inline-block;
+}
