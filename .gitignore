@@ -5,6 +5,7 @@ web_crawler/web_crawler/spiders/__pycache__
 crawler-dashboard/__pycache__
 web_crawler/logs
 crawler-dashboard\templates
+crawler_dashboard/__pycache__/
 notebook
 rss_scraper
 rssList.csv
