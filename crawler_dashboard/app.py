@@ -114,7 +114,11 @@ def cutted_text(text):
 
 def display_dataset(dataset,channel,website,_date):
     param = urllib.parse.urlencode({'channel':channel,'website':website,'date':_date})
-    href = 'http://127.0.0.1:5002/csv?{}'.format(param)
+    google_vm = True
+    if google_vm:
+        href = 'http://35.232.200.27/:5002/csv?{}'.format(param)
+    else:
+        href = 'http://127.0.0.1:5002/csv?{}'.format(param)
     card_content = [
         dbc.Card(
         ([
