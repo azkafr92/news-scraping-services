@@ -181,7 +181,7 @@ def display_result(n1,website,channel,_date,token):
         
         base_url = base_url_format[website].format(channel=channel,year=year,month=month,day=day)
         
-        requests.get('http://localhost:5000/crawl.json?spider_name={spider_name}&url={url}'.format(spider_name=website,url=base_url))
+        requests.get('http://localhost:9080/crawl.json?spider_name={spider_name}&url={url}'.format(spider_name=website,url=base_url))
         
         return [
             [html.P(children=[
