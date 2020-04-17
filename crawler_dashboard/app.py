@@ -29,6 +29,10 @@ app = dash.Dash(__name__,
                 server=server)
 app.config['suppress_callback_exceptions']=True
 
+'''
+to-do:
+- detik : fix css path on channels inet, 
+'''
 website_and_channel_options = {
     'detik':['news','finance','inet','oto','sport','hot','wolipop','health','food','travel'],
     'kompas':['news','tren','hype','money','bola','tekno','sains','otomatif','lifestyle','properti','travel','edukasi','jeo','health','skola']
@@ -208,8 +212,7 @@ def display_result(n1,website,channel,_date,token):
 
 @app.callback(
     [Output('display-text','children'),
-     Output('display-text','className'),
-     Output('display','className')],
+     Output('display-text','className')],
     [Input('display','n_clicks')],
     [State('website','value'),
      State('channel','value'),
@@ -219,8 +222,7 @@ def display_text(n1,website,channel,_date):
     dataset = get_dataset(channel,website,_date)
     return [
         display_dataset(dataset,channel,website,_date),
-        'visible',
-        'none'
+        'visible'
     ]
 
 if __name__ == "__main__":
