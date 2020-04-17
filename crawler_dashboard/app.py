@@ -113,6 +113,7 @@ def cutted_text(text):
     return text+'..'
 
 def display_dataset(dataset,channel,website,_date):
+    dataset = dataset[:10]
     param = urllib.parse.urlencode({'channel':channel,'website':website,'date':_date})
     google_vm = True
     if google_vm:
