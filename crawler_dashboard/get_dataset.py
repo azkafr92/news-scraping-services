@@ -99,4 +99,4 @@ def download_result():
 
 if __name__ == "__main__":
     #print(get_dataset('finance','detik','04/03/2020'))
-    app.run(port=5002,debug=True)
+    app.run(host='0.0.0.0',port=5002,debug=True)
