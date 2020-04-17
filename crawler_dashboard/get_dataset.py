@@ -39,7 +39,7 @@ def get_dataset(channel,website,_date):
                 SELECT title,link,text,published FROM {}
                 WHERE channel LIKE %s
                 AND published BETWEEN %s AND %s
-                ORDER BY published DESC LIMIT 9;
+                ORDER BY published DESC LIMIT 100;
             ''').format(sql.Identifier(website)),
             (channel,start,end))
         result = cur.fetchall()
