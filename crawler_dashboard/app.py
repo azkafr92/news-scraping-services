@@ -31,7 +31,8 @@ app.config['suppress_callback_exceptions']=True
 
 '''
 to-do:
-- detik : fix css path on channels inet, 
+    1) detik : fix css path on channels:
+        - inet -> news url not display on the response -> caused by: ai-generated url, so when the page not loaded in the browser, the url will be replace by blank url
 '''
 website_and_channel_options = {
     'detik':['news','finance','inet','oto','sport','hot','wolipop','health','food','travel'],
